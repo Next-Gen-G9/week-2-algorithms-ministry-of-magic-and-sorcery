@@ -66,6 +66,13 @@ void addBook(std::vector<Book>& books) {
 // STUDENT TASK: Implement the displayAllBooks function.
 // This exercise covers: functions, std::vector
 void displayAllBooks(const std::vector<Book>& books) {
+    cout << "ID\tTitle\tAuthor\tAvailable" << std::endl;
+    cout << "----------------------------------------" << std::endl;
+    while{
+    for (const auto& book : books) {
+        std::cout << book.id << "\t" << book.title << "\t" << book.author << "\t" 
+                  << (book.isAvailable ? "Yes" : "No") << std::endl;
+    }
     // 1. Print a formatted header for the book list.
     // 2. Create a loop that iterates through the entire 'books' vector.
     // 3. Inside the loop, print the details of each book (id, title, author, availability).
@@ -84,6 +91,21 @@ Book* findBookById(std::vector<Book>& books, int id) {
 // STUDENT TASK: Implement checkOutBook using the pointer from findBookById.
 // This exercise covers: functions, pointers (*)
 void checkOutBook(std::vector<Book>& books) {
+    std::cout << "ID of the book to check out: ";
+    int bookId;
+    std::cin >> bookId;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear the input buffer
+    Book* bookPtr = findBookById(books, bookId);
+    if (bookPtr == nullptr) {
+        std::cout << "Book not found." << std::endl;
+        return;
+    }
+    if (!bookPtr->isAvailable) {
+        std::cout << "Book is already checked out." << std::endl;
+        return;
+    }
+    bookPtr->isAvailable = false; // Mark the book as checked out
+    std::cout << "Book checked out successfully: " << bookPtr->title << std::endl;
     // 1. Prompt the user for the "ID of the book to check out: ".
     // 2. Call findBookById() with the user's ID to get a pointer to the book.
     // 3. Check if the returned pointer is NOT nullptr.

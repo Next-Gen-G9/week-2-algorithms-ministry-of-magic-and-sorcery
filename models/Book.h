@@ -1,7 +1,8 @@
 #ifndef BOOK_H
 #define BOOK_H
 
-#include <string> // Required for std::string
+#include <string>
+using namespace std; // Required for std::string
 
 // STUDENT TASK: Define the structure for a Book.
 // This exercise covers: struct, std::string
@@ -15,6 +16,10 @@
 //
 struct Book {
     // Add member variables here
+    int id;
+    string title;
+    string author;
+    bool isAvailable;
 };
 
 #endif // BOOK_H

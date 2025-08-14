@@ -15,6 +15,10 @@
 //
 struct Book {
     // Add member variables here
+    int id;                // Unique identifier for the book
+    std::string title;
+    std::string author;   // Author of the book
+    bool isAvailable;     // Availability status of the book
 };
 
 #endif // BOOK_H
